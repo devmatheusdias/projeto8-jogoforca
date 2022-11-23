@@ -8,7 +8,6 @@
   max-width: 1250px;
   height: 100%;
   margin:  64px auto;
-  
 }
 
 
@@ -22,6 +21,10 @@ main {
   height: 466.67px;
 }
 
+.right-container{
+  position: relative;
+}
+
 .choose-word {
   width: 200px;
   height: 60px;
@@ -33,6 +36,34 @@ main {
   left: 23.44px;
   font-weight: 700;
   text-align: center;
+  cursor: pointer;
+  position: fixed;
+  left: calc(100vw - 220px);
+}
+
+.disabled-chose-word{
+  cursor: not-allowed;
+  background-color: #043d1c;
+  opacity: 60%;
+  color: gray;
+}
+
+.container-hidden-word{
+  background-color: crimson;
+  display: flex;
+  margin-top: 335px;  
+}
+
+.hidden-word{
+  margin-left: 20px;
+  width: 50px;
+  border-bottom: 3px solid black;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 68.1px;
+  opacity: 30%;
 }
 
 .letter {
@@ -50,13 +81,25 @@ main {
   line-height: 18.75px;
   color: #798A9F;
   font-family: 'Roboto', sans-serif;
-
+  cursor: not-allowed;
 }
+
+.letter-enabled{
+  cursor: pointer;
+  background-color: #7AA7C7;
+  color: #39739D;
+}
+
+.letter:visited(){
+  background-color: crimson;
+}
+
+
+
 
 .letters-container {
   max-width: 676px;
   margin: 150px auto 50px auto;
-
 }
 
 .letters-list {
@@ -85,11 +128,17 @@ main {
   height: 40px;
   border-radius: 3px;
   border: 1px solid #CCCCCC;
+  background-color: #9faab5;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
   background: #FFFFFF;
   margin: 0px 10px;
   padding-left: 15px;
   font-size: 16px;
+  cursor: not-allowed;
+}
+
+.input-enabled{
+  cursor: text;
 }
 
 .kick-button {
@@ -102,4 +151,5 @@ main {
   border-radius: 3px;
   font-size: 16px;
   font-weight: 700;
+  cursor: pointer;
 }
