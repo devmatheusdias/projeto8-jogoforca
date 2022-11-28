@@ -1,13 +1,20 @@
 import React from "react";
 import { useState } from "react";
 
-export default function Chute(props) {
 
-    const {state, palavra} = props;
+export default function Chute({ array, chute, setChute }) {
+
 
     function mostrarPalavra() {
-        alert(palavra)
+        let palavra = array.join("");
+
+        if(palavra == chute){
+            alert('Acertou!')
+        }
+
     }
+
+
 
     return (
         <div className="forms-container">
@@ -15,7 +22,7 @@ export default function Chute(props) {
                 Já sei a palavra!
             </span>
 
-            <input type="text" className={`input ${state ? "" : "input-enabled"}`} disabled={state}/>
+            <input type="text" className="input" onChange={(event)=> setChute(event.target.value)}/>
 
             <button className="kick-button" onClick={mostrarPalavra}>Chutar</button>
         </div>

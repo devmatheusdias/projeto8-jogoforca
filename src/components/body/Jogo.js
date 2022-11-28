@@ -1,36 +1,25 @@
 import React from "react";
 
-export default function Jogo(props) {
+export default function Jogo({ forcaImagem, array, botoesClicados }) {
 
-    const { enabledComponents, palavra, state} = props
-
-    const arrayPalavra = [...palavra];
-
+    function escolherPalavra(){
+        
+    }
 
     return (
         <main>
             <div>
-                <img className="gallows-image" src="/assets/img/forca0.png" alt="" />
+                <img className="imagem-forca" src={forcaImagem} alt="" />
+
             </div>
 
-            <div className="right-container">
-                <button className={`choose-word ${state ? "" : "disabled-chose-word"}`} onClick={enabledComponents} disables={state}>Escolher Palavra</button>
-                <div className="container-hidden-word">
-                        {arrayPalavra.map((letra) => <HiddenWord palavra={letra}></HiddenWord>)}
-                        {/* <HiddenWord palavra={arrayPalavra}></HiddenWord> */}
-
+            <div className="container-direito">
+                <button className="escolher-palavra" onClick={escolherPalavra}>Escolher Palavra</button>
+                <div className="lista-letra-oculta">
+                    {array.map((letra) => <p className={`letra-oculta ${botoesClicados.includes(letra) && "letra-exposta"}`}>{letra}</p>)}
                 </div>
-
             </div>
-
         </main>
     );
 }
 
-function HiddenWord(props) {
-    const {palavra} = props;
-
-    return (
-        <div className="hidden-word">{palavra}</div>
-    );
-}

@@ -2,36 +2,29 @@ import React from "react";
 import Jogo from "./body/Jogo"
 import Letras from "./footer/Letras";
 import Chute from "./footer/Chute";
-import palavras from "../palavras";
+import {alfabeto} from "../alfabeto"
+import palavras from "../palavras"
 import { useState } from "react";
+
+let array = Array.from(palavras[Math.floor(Math.random() * palavras.length)]);
 
 function App() {
 
+  const [botoesClicados, setBotoesClicados] = useState([]);
+  
+  const [forcaImagem, setForcaImagem] = useState(`/assets/img/forca${0}.png`);
 
-  // estado de botões habilitados / desabilitados
-  const [state, setState] = useState("true");
-
-  // contagem de erros
-  const [erros, setErros] = useState(0);
-
-  const [palavra, setPalavra] = useState("");
-
-  // let palavra = palavras[Math.floor(Math.random() * (palavras.length-1))];
-
-  // habilita os botões bloqueados
-  function enabledComponents() {
-    setState(""); //seta os atributos "disabled" dos botões para false
-
-    setPalavra(palavras[Math.floor(Math.random() * (palavras.length-1))]); //seta uma palvra aleatoria
-  }
-
+  const [chute, setChute] = useState();
 
 
   return (
     <div className="body">
-      <Jogo enabledComponents={enabledComponents} palavra={palavra} state={state}></Jogo> {/* Passa a função de habilitar botões para o botão "escolher palavra*/}
-      <Letras state={state}></Letras>
-      <Chute state={state} palavra={palavra}></Chute>
+      <Jogo forcaImagem={forcaImagem} setForcaImagem={setForcaImagem} array={array} botoesClicados={botoesClicados}></Jogo>
+
+      <Letras alfabeto={alfabeto} botoesClicados={botoesClicados} setBotoesClicados={setBotoesClicados} setForcaImagem={setForcaImagem} array={array}></Letras>
+      
+
+      <Chute array={array} chute={chute} setChute={setChute}></Chute>
     </div>
 
   );
